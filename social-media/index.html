@@ -7,7 +7,7 @@
 <title>ZeroBooze Social Posts</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@200;300;400&family=Lexend:wght@300;400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap">
 <style>
 /* Layout: a dark gallery, one row per post (artwork left, caption right), stacking on phones. */
 :root {
@@ -118,16 +118,63 @@ h2.part span { font: 300 11px/1.6 var(--wide); letter-spacing: .32em; color: var
 .post.qcard .mark { font-family: Georgia, "Times New Roman", serif; font-size: 26cqw; line-height: .5; color: #C8A46B; height: 12cqw; }
 .post.qcard blockquote { font-size: 5.6cqw; }
 .post.qcard .foot { color: #C8A46B; opacity: 1; }
+
+/* ---- Design 1B light theme (overrides the dark Design 3 look) ---- */
+:root { --night: #FAF9F6; --coal: #FFFFFF; --smoke: #D9D5CA; --pearl: #18241F; --ash: #6E7A73; --gilt: #A87A3D; --brand: #4d0705;
+  --wide: "Montserrat", "Helvetica Neue", Arial, sans-serif; --text: "Montserrat", "Helvetica Neue", Arial, sans-serif; color-scheme: light; }
+body { font-weight: 400; }
+header.top .logo { color: var(--brand); }
+h1, .meta h2, h2.part { font-weight: 300; }
+.copybtn { color: var(--brand); border-color: var(--brand); font-weight: 600; }
+.copybtn:hover { background: var(--brand); color: #FAF9F6; }
+.oncopy, .cap { background: #FFFFFF; }
+.post { background: #FAF9F6; color: #18241F; font-family: var(--text); font-weight: 400; box-shadow: 0 1px 0 #D9D5CA, 0 18px 40px rgba(24,36,31,.08); }
+.post .logo { color: #4d0705; }
+.post .eb { font-family: var(--wide); font-weight: 600; color: #A87A3D; }
+.post h3, .post .big, .post.type li { font-family: var(--wide); font-weight: 300; }
+.post blockquote { font-family: var(--text); font-weight: 300; }
+.post .body { color: #18241F; opacity: .8; }
+.post .cite { font-family: var(--wide); font-weight: 500; color: #6E7A73; }
+.post .foot { font-family: var(--wide); font-weight: 600; color: #4d0705; opacity: 1; }
+.post .rule { background: #A87A3D; }
+/* photo layouts: photo on top, warm white panel below */
+.post.split .ph, .post.full .ph { inset: 0 0 auto 0; height: 55%; }
+.post.split .ph::after, .post.full .ph::after { background: linear-gradient(180deg, rgba(250,249,246,0) 0%, rgba(250,249,246,0) 50%, rgba(250,249,246,.55) 78%, #FAF9F6 100%); }
+.post.split .copy, .post.full .copy { top: 51%; bottom: auto; gap: 2.4cqw; }
+.post.full.nofoot .copy { bottom: auto; }
+.post.full h3 { font-size: 6.4cqw; }
+.post.full blockquote, .post.split blockquote { font-size: 4.5cqw; }
+.post.split h3 { font-size: 5.8cqw; }
+/* card layouts: soft stone */
+.post.type, .post.fig, .post.holiday, .post.qcard { background: #EEEBE3; }
+.post.gifts { background: #FAF9F6; }
+.post.type li:nth-child(odd) { color: #18241F; }
+.post.type li:nth-child(even) { color: #A87A3D; }
+.post.fig .big { color: #4d0705; }
+.post.fig li { color: #18241F; opacity: .8; }
+.post.holiday .orn { color: #A87A3D; }
+.post.qcard .mark { color: #4d0705; }
+.post.type .foot, .post.fig .foot, .post.holiday .foot, .post.qcard .foot { color: #4d0705; }
+/* logo bottom center, CTA sits with the copy */
+.post .logo { top: auto; bottom: 5cqw; width: 40cqw; }
+.post .foot { position: static; margin-top: 1.2cqw; }
+.post.type .copy, .post.fig .copy, .post.qcard .copy { inset: 10cqw 7.4cqw 16cqw; }
+.post.holiday .orn { top: 14cqw; }
+.post.holiday .copy { top: 50cqw; }
+.post.gifts .tiles { top: 8cqw; }
+.post.gifts .tiles { left: 18cqw; right: 18cqw; }
+.post.gifts .copy { bottom: auto; top: 82cqw; }
+.post.fig ul { gap: .6cqw; }
+.post.fig li { line-height: 1.35; }
 </style>
 </head>
 <body>
-
 <div class="wrap">
 <header class="top">
 <svg class="logo" aria-hidden="true" viewBox="0 0 1468.52 208.87" fill="currentColor" role="img" aria-label="ZeroBooze"><path d="M337.11,160.28h64.89v13.16h-83.04v-13.16l63.76-97.55h-62.62v-13.16h80.77v13.16L337.11,160.28Z"/><path d="M540.39,117.63h-102.78q.68,14.07,6.81,24.05t16.11,15.09,21.78,5.1q15.42,0,25.97-7.49,10.55-7.48,13.96-20.19h16.79q-4.55,18.16-19.4,29.61-14.86,11.46-37.32,11.46-17.48,0-31.31-7.83-13.84-7.83-21.67-22.23-7.82-14.41-7.82-33.69,0-19.29,7.71-33.81,7.71-14.51,21.55-22.23,13.84-7.71,31.54-7.72,17.69,0,30.97,7.72,13.27,7.71,20.41,20.76,7.15,13.05,7.15,28.92Q540.84,113.32,540.39,117.63ZM519.17,81.11q-5.78-9.76-15.76-14.75-9.99-4.99-21.78-4.99-17.7,0-30.18,11.34-12.48,11.35-13.84,31.99h87.12Q524.96,90.86,519.17,81.11Z"/><path d="M601.75,53.65q10.77-6.35,26.43-6.35v16.56h-4.31q-17.25,0-27.68,9.3t-10.44,31.09v69.19h-15.88V49.57h15.88v22.01Q590.97,60.01,601.75,53.65Z"/><path d="M674.8,167.43q-13.96-7.83-22.01-22.23t-8.05-33.69,8.16-33.69,22.24-22.24,31.53-7.83,31.65,7.83,22.23,22.24,8.06,33.69q0,19.05-8.17,33.57-8.17,14.53-22.46,22.35-14.29,7.83-31.76,7.83Q688.75,175.26,674.8,167.43ZM728.91,155.86q10.43-5.56,16.9-16.79,6.46-11.23,6.46-27.56,0-16.34-6.35-27.57-6.35-11.23-16.79-16.79-10.44-5.55-22.68-5.56-12.26,0-22.69,5.56-10.44,5.56-16.68,16.79-6.24,11.23-6.24,27.57,0,16.33,6.24,27.56,6.24,11.23,16.56,16.79,10.33,5.56,22.58,5.56Q718.47,161.42,728.91,155.86Z"/><path d="M848.06,50.48q10.21-5.45,23.37-5.45,15.65,0,28.36,7.94t20.07,22.69,7.38,34.26-7.38,34.37-20.07,22.91-28.36,8.06q-13.39,0-23.37-5.33-9.99-5.33-15.66-14.18v17.69h-38.79V5.56h38.79v59.21Q837.85,55.92,848.06,50.48ZM879.71,87.12q-8.06-8.28-19.85-8.28-11.57,0-19.63,8.39-8.05,8.4-8.05,22.91,0,14.53,8.05,22.92,8.05,8.4,19.63,8.39,11.57,0,19.73-8.5,8.17-8.51,8.17-23.03Q887.76,95.4,879.71,87.12Z"/><path d="M971.81,167.32q-14.86-7.94-23.37-22.69t-8.51-34.49q0-19.5,8.62-34.37,8.62-14.85,23.6-22.8,14.97-7.94,33.58-7.94,18.6,0,33.57,7.94,14.98,7.95,23.6,22.8,8.62,14.87,8.62,34.37,0,19.52-8.74,34.38-8.73,14.86-23.82,22.8-15.09,7.94-33.69,7.94Q986.67,175.26,971.81,167.32ZM1024.22,133.51q7.82-8.17,7.82-23.37,0-15.19-7.6-23.36-7.6-8.17-18.71-8.17-11.35,0-18.83,8.05-7.49,8.06-7.49,23.48,0,15.21,7.37,23.37,7.37,8.17,18.49,8.17Q1016.38,141.68,1024.22,133.51Z"/><path d="M1116.32,167.32q-14.86-7.94-23.37-22.69t-8.51-34.49q0-19.5,8.62-34.37,8.62-14.85,23.6-22.8,14.97-7.94,33.58-7.94,18.6,0,33.57,7.94,14.98,7.95,23.6,22.8,8.62,14.87,8.62,34.37,0,19.52-8.74,34.38-8.73,14.86-23.82,22.8-15.09,7.94-33.69,7.94Q1131.18,175.26,1116.32,167.32ZM1168.73,133.51q7.82-8.17,7.82-23.37,0-15.19-7.6-23.36-7.6-8.17-18.71-8.17-11.35,0-18.83,8.05-7.49,8.06-7.49,23.48,0,15.21,7.37,23.37,7.37,8.17,18.49,8.17Q1160.89,141.68,1168.73,133.51Z"/><path d="M1272.97,141.45h54.9v31.99h-98.24v-30.85l52.64-63.75h-52.18v-31.99h96.64v30.85L1272.97,141.45Z"/><path d="M1467.84,119.45h-87.8q.91,11.8,7.6,18.03t16.45,6.24q14.52,0,20.19-12.25h41.3q-3.18,12.48-11.46,22.46-8.29,9.99-20.76,15.66-12.48,5.67-27.91,5.67-18.6,0-33.12-7.94-14.52-7.94-22.69-22.69-8.16-14.75-8.16-34.49,0-19.73,8.05-34.48,8.05-14.75,22.57-22.69,14.52-7.94,33.35-7.94,18.38,0,32.67,7.72,14.3,7.71,22.35,22,8.05,14.3,8.05,33.35Q1468.52,113.55,1467.84,119.45ZM1428.82,97.89q0-9.98-6.8-15.88-6.81-5.89-17.02-5.9-9.76,0-16.45,5.68-6.69,5.67-8.28,16.1H1428.82Z"/><path d="M113.78,45.22l-55.83.1,7.38,11.2,7.39,11.2,13.41.03c7.37.01,27.17,0,43.99-.02,16.82-.02,30.59,0,30.59.07s-1.6,2.29-3.56,4.96c-3.28,4.47-5.63,7.64-19.05,25.7-2.6,3.5-8.21,11.07-12.46,16.83q-9.68,13.12-19.37,26.23c-13.79,18.67-16.42,22.26-16.42,22.47,0,.18,113.95.13,115.46-.05,1.28-.16,2.95-.73,4.04-1.36,2.01-1.18,4.03-3.88,4.85-6.47.62-1.94.6-5.14-.03-6.95-1.25-3.57-3.89-6.14-7.38-7.19-1.09-.32-3.37-.35-36.53-.44l-35.37-.1,2.31-3.14c1.27-1.72,5.53-7.49,9.45-12.82,3.93-5.33,10.4-14.09,14.38-19.47s11.64-15.78,17.03-23.1c8.73-11.87,14.19-19.28,24.42-33.16,1.7-2.3,3.13-4.29,3.17-4.41.1-.25-6.33-.26-91.87-.11M35.01,10.62c3.85,5.84,7.17,10.9,7.37,11.25.21.35.47.65.58.67.11.01,36.71,0,81.34-.02,57.69-.03,81.73.02,83.2.17,7.94.83,14.77,5.5,18.27,12.48,2.37,4.74,2.91,11.37,1.39,17.18-1.09,4.2-2,5.57-15.77,23.83-10.76,14.27-23.95,31.85-27.91,37.19l-4.15,5.62,14.52.07c14.21.07,14.57.08,16.65.51,8.69,1.82,15.87,6.74,20.72,14.22,5.8,8.94,7.2,20.19,3.74,30.11-1.6,4.6-4.53,9.27-8,12.74-4.63,4.63-10.32,7.72-16.89,9.18l-1.89.42-81.29.06c-50.69.03-81.28-.01-81.28-.13,0-.17,6.38-8.93,12.84-17.63,2.94-3.95,10.78-14.59,19.78-26.82,11.67-15.86,13.88-18.87,22.09-29.95,4.5-6.08,9.82-13.26,11.81-15.95,1.99-2.69,3.7-5.01,3.81-5.14.15-.2-2.68-.25-14-.25h-14.19l-3.3,4.46q-4.15,5.6-8.31,11.2-4.75,6.41-9.49,12.83c-2.46,3.33-14.03,18.97-25.71,34.74q-13.57,18.3-27.11,36.61c-3.22,4.36-7.66,10.32-9.85,13.26l-3.98,5.34,104.68-.06c98.32-.05,104.81-.08,106.92-.4,8.24-1.25,15.75-4.15,22.71-8.78,12.4-8.24,21.2-21.15,24.05-35.3.9-4.46,1.08-6.42,1.08-11.55-.01-9.31-1.63-16.57-5.53-24.82-4.47-9.45-12.03-17.87-21.2-23.62-2.06-1.3-7.2-3.97-8.75-4.56-.65-.25-.82-.39-.67-.58,3.67-4.68,18.48-24.82,20.24-27.52,3.6-5.52,6.05-11.97,6.92-18.24,1.73-12.43-.46-23.25-6.63-32.76C236.56,9.5,224.23,1.8,211.02.2c-1.11-.13-31.58-.2-92.33-.2H28.01L35.01,10.62Z" fill-rule="evenodd"/></svg>
-<p class="kicker">Design 3 &middot; Instagram &amp; Facebook &middot; 1080 &times; 1350</p>
+<p class="kicker">Design 1 &middot; Instagram &amp; Facebook &middot; 1080 &times; 1350</p>
 <h1>Twenty-Five Posts</h1>
-<p class="lede">Twenty-five posts in the Design 3 look: black, wide-tracked type, one brass accent and full-bleed photography. Posts 1 to 5 come from Keith&rsquo;s founder films. Posts 6 to 15 come from the site&rsquo;s resource library and the holiday season, from Thanksgiving through New Year&rsquo;s. Posts 16 to 20 go back to Keith&rsquo;s films for more of his own words. Posts 21 to 25 borrow encouragement from well-known voices.</p><nav class="jump"><a href="#first">Launch posts, 1&ndash;5</a><a href="#next">Resources &amp; holidays, 6&ndash;15</a><a href="#keith">In Keith&rsquo;s words, 16&ndash;20</a><a href="#voices">Words to live by, 21&ndash;25</a></nav>
+<p class="lede">Twenty-five posts in the Design 1 look: warm white, deep green type, brass and maroon accents and bright coastal photography. Posts 1 to 5 come from Keith&rsquo;s founder films. Posts 6 to 15 come from the site&rsquo;s resource library and the holiday season, from Thanksgiving through New Year&rsquo;s. Posts 16 to 20 go back to Keith&rsquo;s films for more of his own words. Posts 21 to 25 borrow encouragement from well-known voices.</p><nav class="jump"><a href="#first">Launch posts, 1&ndash;5</a><a href="#next">Resources &amp; holidays, 6&ndash;15</a><a href="#keith">In Keith&rsquo;s words, 16&ndash;20</a><a href="#voices">Words to live by, 21&ndash;25</a></nav>
 </header>
 <div class="notes">
 <div><h2>The mix</h2><p>Founder voice, the place, the people and the mission, rotated so the grid never repeats itself two posts in a row.</p></div>
@@ -144,8 +191,8 @@ h2.part span { font: 300 11px/1.6 var(--wide); letter-spacing: .32em; color: var
 <blockquote>&ldquo;Everybody has a moment that really wants to figure out how to enjoy life without alcohol in it.&rdquo;</blockquote>
 <span class="rule" aria-hidden="true"></span>
 <p class="cite">Keith Polaski, Founder</p>
-</div>
 <p class="foot">Watch the film &middot; Link in bio</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 1 of 25</span>
@@ -171,9 +218,9 @@ Watch the full film at the link in bio.
 <p class="eb">ZeroBooze Florida</p>
 <h3>A Place to Rest, Reset and Begin Again</h3>
 <span class="rule" aria-hidden="true"></span>
-<p class="body">Our first recovery and relief house is coming to the coast.</p>
-</div>
+<p class="body">Our first recovery and relief house is<br>coming to the coast.</p>
 <p class="foot">Founding guest list now open &middot; Link in bio</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 2 of 25</span>
@@ -197,8 +244,8 @@ The founding guest list is open now. Link in bio.
 <div class="copy">
 <p class="eb">Who It’s For</p>
 <ul><li>The Recovered</li><li>The Recovering</li><li>The Silently Concerned</li><li>The Sober Curious</li></ul>
-</div>
 <p class="foot">No labels. Just one common thread.</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 3 of 25</span>
@@ -225,8 +272,8 @@ There’s a place for you here. Which one sounds like you?
 <h3>You Are Not Alone</h3>
 <span class="rule" aria-hidden="true"></span>
 <p class="body">Different histories.<br>Different reasons for being here.</p>
-</div>
 <p class="foot">Share your story &middot; Link in bio</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 4 of 25</span>
@@ -282,8 +329,8 @@ Simple and true.
 <h3>Your First Alcohol-Free Weekend</h3>
 <span class="rule" aria-hidden="true"></span>
 <p class="body">Good food, early mornings and people who get it.</p>
-</div>
 <p class="foot">Read the simple plan &middot; Link in bio</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 6 of 25</span>
@@ -310,8 +357,8 @@ Our simple plan for your first alcohol-free weekend is at the link in bio.
 <p class="big">12</p>
 <h3>Easy Swaps for Your Evening</h3>
 <ul><li>Sparkling water, bitters and an orange peel</li><li>A walk after dinner instead of a nightcap</li><li>Herbal tea in your favorite glass</li></ul>
-</div>
 <p class="foot">Get all 12 &middot; Link in bio</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 7 of 25</span>
@@ -343,8 +390,8 @@ Get all 12 as a one-page guide for the fridge at the link in bio. What’s your 
 <blockquote>&ldquo;The first gathering, I barely said a word. Nobody minded. By the third, I was the one pouring the drinks.&rdquo;</blockquote>
 <span class="rule" aria-hidden="true"></span>
 <p class="cite">Member, Recovering</p>
-</div>
 <p class="foot">Find a gathering &middot; Link in bio</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 8 of 25</span>
@@ -371,9 +418,9 @@ Find a gathering near you at the link in bio.
 <p class="eb">Find Your People</p>
 <h3>Sober Curious?</h3>
 <span class="rule" aria-hidden="true"></span>
-<p class="body">Five honest questions worth sitting with. No labels, no pressure.</p>
-</div>
+<p class="body">Five honest questions worth sitting with.<br>No labels, no pressure.</p>
 <p class="foot">Read the five questions &middot; Link in bio</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 9 of 25</span>
@@ -402,7 +449,7 @@ Read them at the link in bio.
 <p class="eb">Happy Thanksgiving</p>
 <h3>Grateful for Every Clear Moment</h3>
 <span class="rule" aria-hidden="true"></span>
-<p class="body">From all of us at ZeroBooze, to you and the people you love.</p>
+<p class="body">From all of us at ZeroBooze, to you<br>and the people you love.</p>
 </div>
 </article>
 <div class="meta">
@@ -430,9 +477,9 @@ What are you grateful for this year?
 <svg class="logo" aria-hidden="true" viewBox="0 0 1468.52 208.87" fill="currentColor" role="img" aria-label="ZeroBooze"><path d="M337.11,160.28h64.89v13.16h-83.04v-13.16l63.76-97.55h-62.62v-13.16h80.77v13.16L337.11,160.28Z"/><path d="M540.39,117.63h-102.78q.68,14.07,6.81,24.05t16.11,15.09,21.78,5.1q15.42,0,25.97-7.49,10.55-7.48,13.96-20.19h16.79q-4.55,18.16-19.4,29.61-14.86,11.46-37.32,11.46-17.48,0-31.31-7.83-13.84-7.83-21.67-22.23-7.82-14.41-7.82-33.69,0-19.29,7.71-33.81,7.71-14.51,21.55-22.23,13.84-7.71,31.54-7.72,17.69,0,30.97,7.72,13.27,7.71,20.41,20.76,7.15,13.05,7.15,28.92Q540.84,113.32,540.39,117.63ZM519.17,81.11q-5.78-9.76-15.76-14.75-9.99-4.99-21.78-4.99-17.7,0-30.18,11.34-12.48,11.35-13.84,31.99h87.12Q524.96,90.86,519.17,81.11Z"/><path d="M601.75,53.65q10.77-6.35,26.43-6.35v16.56h-4.31q-17.25,0-27.68,9.3t-10.44,31.09v69.19h-15.88V49.57h15.88v22.01Q590.97,60.01,601.75,53.65Z"/><path d="M674.8,167.43q-13.96-7.83-22.01-22.23t-8.05-33.69,8.16-33.69,22.24-22.24,31.53-7.83,31.65,7.83,22.23,22.24,8.06,33.69q0,19.05-8.17,33.57-8.17,14.53-22.46,22.35-14.29,7.83-31.76,7.83Q688.75,175.26,674.8,167.43ZM728.91,155.86q10.43-5.56,16.9-16.79,6.46-11.23,6.46-27.56,0-16.34-6.35-27.57-6.35-11.23-16.79-16.79-10.44-5.55-22.68-5.56-12.26,0-22.69,5.56-10.44,5.56-16.68,16.79-6.24,11.23-6.24,27.57,0,16.33,6.24,27.56,6.24,11.23,16.56,16.79,10.33,5.56,22.58,5.56Q718.47,161.42,728.91,155.86Z"/><path d="M848.06,50.48q10.21-5.45,23.37-5.45,15.65,0,28.36,7.94t20.07,22.69,7.38,34.26-7.38,34.37-20.07,22.91-28.36,8.06q-13.39,0-23.37-5.33-9.99-5.33-15.66-14.18v17.69h-38.79V5.56h38.79v59.21Q837.85,55.92,848.06,50.48ZM879.71,87.12q-8.06-8.28-19.85-8.28-11.57,0-19.63,8.39-8.05,8.4-8.05,22.91,0,14.53,8.05,22.92,8.05,8.4,19.63,8.39,11.57,0,19.73-8.5,8.17-8.51,8.17-23.03Q887.76,95.4,879.71,87.12Z"/><path d="M971.81,167.32q-14.86-7.94-23.37-22.69t-8.51-34.49q0-19.5,8.62-34.37,8.62-14.85,23.6-22.8,14.97-7.94,33.58-7.94,18.6,0,33.57,7.94,14.98,7.95,23.6,22.8,8.62,14.87,8.62,34.37,0,19.52-8.74,34.38-8.73,14.86-23.82,22.8-15.09,7.94-33.69,7.94Q986.67,175.26,971.81,167.32ZM1024.22,133.51q7.82-8.17,7.82-23.37,0-15.19-7.6-23.36-7.6-8.17-18.71-8.17-11.35,0-18.83,8.05-7.49,8.06-7.49,23.48,0,15.21,7.37,23.37,7.37,8.17,18.49,8.17Q1016.38,141.68,1024.22,133.51Z"/><path d="M1116.32,167.32q-14.86-7.94-23.37-22.69t-8.51-34.49q0-19.5,8.62-34.37,8.62-14.85,23.6-22.8,14.97-7.94,33.58-7.94,18.6,0,33.57,7.94,14.98,7.95,23.6,22.8,8.62,14.87,8.62,34.37,0,19.52-8.74,34.38-8.73,14.86-23.82,22.8-15.09,7.94-33.69,7.94Q1131.18,175.26,1116.32,167.32ZM1168.73,133.51q7.82-8.17,7.82-23.37,0-15.19-7.6-23.36-7.6-8.17-18.71-8.17-11.35,0-18.83,8.05-7.49,8.06-7.49,23.48,0,15.21,7.37,23.37,7.37,8.17,18.49,8.17Q1160.89,141.68,1168.73,133.51Z"/><path d="M1272.97,141.45h54.9v31.99h-98.24v-30.85l52.64-63.75h-52.18v-31.99h96.64v30.85L1272.97,141.45Z"/><path d="M1467.84,119.45h-87.8q.91,11.8,7.6,18.03t16.45,6.24q14.52,0,20.19-12.25h41.3q-3.18,12.48-11.46,22.46-8.29,9.99-20.76,15.66-12.48,5.67-27.91,5.67-18.6,0-33.12-7.94-14.52-7.94-22.69-22.69-8.16-14.75-8.16-34.49,0-19.73,8.05-34.48,8.05-14.75,22.57-22.69,14.52-7.94,33.35-7.94,18.38,0,32.67,7.72,14.3,7.71,22.35,22,8.05,14.3,8.05,33.35Q1468.52,113.55,1467.84,119.45ZM1428.82,97.89q0-9.98-6.8-15.88-6.81-5.89-17.02-5.9-9.76,0-16.45,5.68-6.69,5.67-8.28,16.1H1428.82Z"/><path d="M113.78,45.22l-55.83.1,7.38,11.2,7.39,11.2,13.41.03c7.37.01,27.17,0,43.99-.02,16.82-.02,30.59,0,30.59.07s-1.6,2.29-3.56,4.96c-3.28,4.47-5.63,7.64-19.05,25.7-2.6,3.5-8.21,11.07-12.46,16.83q-9.68,13.12-19.37,26.23c-13.79,18.67-16.42,22.26-16.42,22.47,0,.18,113.95.13,115.46-.05,1.28-.16,2.95-.73,4.04-1.36,2.01-1.18,4.03-3.88,4.85-6.47.62-1.94.6-5.14-.03-6.95-1.25-3.57-3.89-6.14-7.38-7.19-1.09-.32-3.37-.35-36.53-.44l-35.37-.1,2.31-3.14c1.27-1.72,5.53-7.49,9.45-12.82,3.93-5.33,10.4-14.09,14.38-19.47s11.64-15.78,17.03-23.1c8.73-11.87,14.19-19.28,24.42-33.16,1.7-2.3,3.13-4.29,3.17-4.41.1-.25-6.33-.26-91.87-.11M35.01,10.62c3.85,5.84,7.17,10.9,7.37,11.25.21.35.47.65.58.67.11.01,36.71,0,81.34-.02,57.69-.03,81.73.02,83.2.17,7.94.83,14.77,5.5,18.27,12.48,2.37,4.74,2.91,11.37,1.39,17.18-1.09,4.2-2,5.57-15.77,23.83-10.76,14.27-23.95,31.85-27.91,37.19l-4.15,5.62,14.52.07c14.21.07,14.57.08,16.65.51,8.69,1.82,15.87,6.74,20.72,14.22,5.8,8.94,7.2,20.19,3.74,30.11-1.6,4.6-4.53,9.27-8,12.74-4.63,4.63-10.32,7.72-16.89,9.18l-1.89.42-81.29.06c-50.69.03-81.28-.01-81.28-.13,0-.17,6.38-8.93,12.84-17.63,2.94-3.95,10.78-14.59,19.78-26.82,11.67-15.86,13.88-18.87,22.09-29.95,4.5-6.08,9.82-13.26,11.81-15.95,1.99-2.69,3.7-5.01,3.81-5.14.15-.2-2.68-.25-14-.25h-14.19l-3.3,4.46q-4.15,5.6-8.31,11.2-4.75,6.41-9.49,12.83c-2.46,3.33-14.03,18.97-25.71,34.74q-13.57,18.3-27.11,36.61c-3.22,4.36-7.66,10.32-9.85,13.26l-3.98,5.34,104.68-.06c98.32-.05,104.81-.08,106.92-.4,8.24-1.25,15.75-4.15,22.71-8.78,12.4-8.24,21.2-21.15,24.05-35.3.9-4.46,1.08-6.42,1.08-11.55-.01-9.31-1.63-16.57-5.53-24.82-4.47-9.45-12.03-17.87-21.2-23.62-2.06-1.3-7.2-3.97-8.75-4.56-.65-.25-.82-.39-.67-.58,3.67-4.68,18.48-24.82,20.24-27.52,3.6-5.52,6.05-11.97,6.92-18.24,1.73-12.43-.46-23.25-6.63-32.76C236.56,9.5,224.23,1.8,211.02.2c-1.11-.13-31.58-.2-92.33-.2H28.01L35.01,10.62Z" fill-rule="evenodd"/></svg>
 <div class="copy">
 <p class="eb">When Someone Offers You a Drink</p>
-<ul><li>&ldquo;No thanks, I&rsquo;m good.&rdquo;</li><li>&ldquo;I&rsquo;m driving tonight.&rdquo;</li><li>&ldquo;I feel better without it.&rdquo;</li><li>&ldquo;I&rsquo;ll take a sparkling water.&rdquo;</li></ul>
-</div>
+<ul><li>&ldquo;No thanks, I&rsquo;m good.&rdquo;</li><li>&ldquo;I&rsquo;m driving tonight.&rdquo;</li><li>&ldquo;I feel better<br>without it.&rdquo;</li><li>&ldquo;I&rsquo;ll take a<br>sparkling water.&rdquo;</li></ul>
 <p class="foot">Simple words for awkward moments</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 11 of 25</span>
@@ -462,9 +509,9 @@ Save this for your next party.
 <p class="eb">Living Zero</p>
 <h3>Begin Again, Every Morning</h3>
 <span class="rule" aria-hidden="true"></span>
-<p class="body">Small rituals that make the start of the day feel like a reward.</p>
-</div>
+<p class="body">Small rituals that make the start of<br>the day feel like a reward.</p>
 <p class="foot">Morning rituals &middot; Link in bio</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 12 of 25</span>
@@ -491,8 +538,8 @@ More morning rituals our members swear by at the link in bio.
 <p class="eb">The ZeroBooze Shop</p>
 <h3>Gifts That Start a Conversation</h3>
 <span class="rule" aria-hidden="true"></span>
-</div>
 <p class="foot">Shop now &middot; Link in bio</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 13 of 25</span>
@@ -521,8 +568,8 @@ Shop the collection at the link in bio.
 <h3>Present for Every Moment</h3>
 <span class="rule" aria-hidden="true"></span>
 <p class="body">Wishing you a calm, clear and joyful holiday.</p>
-</div>
 <p class="foot">From all of us at ZeroBooze</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 14 of 25</span>
@@ -550,9 +597,9 @@ If the holidays are hard this year, reach out. You don’t have to do this alone
 <p class="eb">December 31 &middot; Naples, FL</p>
 <h3>A Clear-Headed New Year</h3>
 <span class="rule" aria-hidden="true"></span>
-<p class="body">Music, mocktails and a midnight toast you&rsquo;ll actually remember.</p>
-</div>
+<p class="body">Music, mocktails and a midnight toast<br>you&rsquo;ll actually remember.</p>
 <p class="foot">RSVP &middot; Link in bio</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 15 of 25</span>
@@ -582,8 +629,8 @@ Spots are limited. RSVP at the link in bio.
 <blockquote>&ldquo;The reflection in the mirror is you, helping make the decision that now is the time.&rdquo;</blockquote>
 <span class="rule" aria-hidden="true"></span>
 <p class="cite">Keith Polaski, Founder</p>
-</div>
 <p class="foot">Watch the film &middot; Link in bio</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 16 of 25</span>
@@ -611,8 +658,8 @@ Watch the full film at the link in bio.
 <blockquote>You&rsquo;re in it to win it, even though it&rsquo;s a game that doesn&rsquo;t have a final second on the clock.</blockquote>
 <span class="rule" aria-hidden="true"></span>
 <p class="cite">Keith Polaski, Founder</p>
-</div>
 <p class="foot">Watch the film &middot; Link in bio</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 17 of 25</span>
@@ -640,8 +687,8 @@ Watch “The Community” at the link in bio.
 <blockquote>&ldquo;We&rsquo;re not going to put labels on anybody. Everybody&rsquo;s unique.&rdquo;</blockquote>
 <span class="rule" aria-hidden="true"></span>
 <p class="cite">Keith Polaski, Founder</p>
-</div>
 <p class="foot">Watch the film &middot; Link in bio</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 18 of 25</span>
@@ -666,17 +713,17 @@ Watch “Who It’s For” at the link in bio.
 <div class="ph"><img src="images/handshake-keith.jpg" alt="" style="object-position:center 30%"></div>
 <div class="copy">
 <p class="eb">Film 04 &middot; A Pledge</p>
-<blockquote>&ldquo;I am not in this to make money. I&rsquo;m in this to help people find and embrace a life without alcohol.&rdquo;</blockquote>
+<blockquote>&ldquo;I&rsquo;m in this to help people find and embrace a life without alcohol.&rdquo;</blockquote>
 <span class="rule" aria-hidden="true"></span>
 <p class="cite">Keith Polaski, Founder</p>
-</div>
 <p class="foot">Watch the film &middot; Link in bio</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 19 of 25</span>
 <h2>Why he does it</h2>
 <p class="label">On the design</p>
-<p class="oncopy">Film 04 · A Pledge<br>“I am not in this to make money. I’m in this to help people find and embrace a life without alcohol.”<br>Keith Polaski, Founder<br>Watch the film · Link in bio</p>
+<p class="oncopy">Film 04 · A Pledge<br>“I’m in this to help people find and embrace a life without alcohol.”<br>Keith Polaski, Founder<br>Watch the film · Link in bio</p>
 <p class="label">Caption</p>
 <p class="cap" id="cap-money">Why ZeroBooze exists, in Keith’s own words.
 
@@ -700,8 +747,8 @@ Watch “A Pledge” at the link in bio.
 <blockquote>&ldquo;If living a life without alcohol crosses your mind or crosses your heart, we&rsquo;re here.&rdquo;</blockquote>
 <span class="rule" aria-hidden="true"></span>
 <p class="cite">Keith Polaski, Founder</p>
-</div>
 <p class="foot">Simple and true &middot; Link in bio</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 20 of 25</span>
@@ -732,8 +779,8 @@ Watch Keith’s welcome at the link in bio.
 <blockquote>&ldquo;Rock bottom became the solid foundation on which I rebuilt my life.&rdquo;</blockquote>
 <span class="rule" aria-hidden="true"></span>
 <p class="cite">J.K. Rowling</p>
-</div>
 <p class="foot">ZeroBooze &middot; Life without alcohol</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 21 of 25</span>
@@ -761,8 +808,8 @@ What did you build from yours?
 <blockquote>&ldquo;Being in recovery has given me everything of value that I have in my life.&rdquo;</blockquote>
 <span class="rule" aria-hidden="true"></span>
 <p class="cite">Rob Lowe</p>
-</div>
 <p class="foot">ZeroBooze &middot; Life without alcohol</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 22 of 25</span>
@@ -788,8 +835,8 @@ Recovery isn’t only about what you give up. It’s about everything you get ba
 <blockquote>&ldquo;It does not matter how slowly you go as long as you do not stop.&rdquo;</blockquote>
 <span class="rule" aria-hidden="true"></span>
 <p class="cite">Confucius</p>
-</div>
 <p class="foot">ZeroBooze &middot; Life without alcohol</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 23 of 25</span>
@@ -817,8 +864,8 @@ Drop a 👣 if you’re still walking.
 <blockquote>You don&rsquo;t have to see the whole staircase. Just take the first step.</blockquote>
 <span class="rule" aria-hidden="true"></span>
 <p class="cite">Martin Luther King Jr.</p>
-</div>
 <p class="foot">ZeroBooze &middot; Life without alcohol</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 24 of 25</span>
@@ -845,8 +892,8 @@ Your first step can be as simple as the link in bio.
 <ul><li>Forget Everything<br>And Run</li><li>or</li><li>Face Everything<br>And Rise</li></ul>
 <span class="rule" aria-hidden="true"></span>
 <p class="cite">Zig Ziglar</p>
-</div>
 <p class="foot">The choice is yours</p>
+</div>
 </article>
 <div class="meta">
 <span class="num">Post 25 of 25</span>
