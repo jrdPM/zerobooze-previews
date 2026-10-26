@@ -463,6 +463,7 @@ a.feature:hover h3 { color: var(--lantern); }
 .rc-ph.info .bars { position: absolute; right: 1.6rem; bottom: 1.6rem; display: flex; align-items: end; gap: 6px; height: 38%; }
 .rc-ph.info .bars i { width: 10px; background: rgba(230,201,149,.65); }
 .rc-ph.doc img { filter: saturate(.85); }
+.rc-ph.doc.solid { background: var(--palm); }
 .rc-ph.doc .cover { position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: 46%; aspect-ratio: 3/4; background: var(--clapboard); box-shadow: 0 18px 40px rgba(24,36,31,.28); display: grid; align-content: space-between; padding: 1rem .9rem; text-align: center; }
 .rc-ph.doc .cover small { font-size: .55rem; letter-spacing: .2em; text-transform: uppercase; color: var(--lantern); font-weight: 600; }
 .rc-ph.doc .cover i { width: 22px; height: 1px; background: var(--lantern); justify-self: center; }
