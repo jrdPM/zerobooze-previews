@@ -651,3 +651,7 @@ body.mega-on .mega { opacity: 1; visibility: visible; transition: opacity .5s; }
   .head-r .inq { display: none; }
   .mega li a { font-size: 1.45rem; }
 }
+/* hero sign-off + stacked center name (Keith's notes, 2026-10-28) */
+.hero .live-zero { margin: 0; font: 300 var(--step-2)/1.1 var(--display); letter-spacing: .22em; text-transform: uppercase; color: #E6C98F; }
+h2.stacked span { display: block; margin-top: .35em; font-size: .52em; letter-spacing: .24em; font-weight: 400; color: var(--lantern); }
+.band-dark h2.stacked span { color: #E6C98F; }
