@@ -13,10 +13,12 @@ $private=hub_private_dir();
 if(!is_dir($private)&&!mkdir($private,0700,true)){fwrite(STDERR,"Cannot create private configuration folder.\n");exit(1);}
 $target=$private.'/zerobooze-content-hub.php';
 if(is_file($target)){fwrite(STDERR,"Configuration already exists. Edit it deliberately; this installer will not overwrite it.\n");exit(1);}
-$name=ask('Cloudways application database name');$user=ask('Database username');$password=ask('Database password',true);
+$shared=$private.'/concepts-config/db.php';$host='localhost';
+if(is_file($shared)){$c=require $shared;$name=(string)($c['name']??'');$user=(string)($c['user']??'');$password=(string)($c['pass']??'');$host=(string)($c['host']??'localhost');fwrite(STDOUT,"Using the database settings from private_html/concepts-config/db.php\n");}
+else{$name=ask('Cloudways application database name');$user=ask('Database username');$password=ask('Database password',true);}
 $admin=ask('Choose a dashboard password (12–72 characters)',true);$confirm=ask('Confirm dashboard password',true);
 if(!preg_match('/^[a-zA-Z0-9_]+$/',$name)||$user===''||$password===''||strlen($admin)<12||strlen($admin)>72||!hash_equals($admin,$confirm)){fwrite(STDERR,"Check the inputs. No configuration was created.\n");exit(1);}
-$dsn='mysql:host=localhost;port=3306;dbname='.$name.';charset=utf8mb4';
+$dsn='mysql:host='.$host.';port=3306;dbname='.$name.';charset=utf8mb4';
 try{
  $db=new PDO($dsn,$user,$password,[PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION]);
  $sql= <<<'ZB_SCHEMA'

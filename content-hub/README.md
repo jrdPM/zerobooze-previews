@@ -10,7 +10,7 @@ After pulling the commit in Cloudways, connect through SSH, go to the applicatio
 php content-hub/setup-cli.php
 ```
 
-The installer asks for the existing application database credentials and a new review dashboard password. It creates only two new tables with the zb_hub_ prefix and saves configuration outside public_html in private_html/zerobooze-content-hub.php. Never commit that configuration or credentials to GitHub. The installer refuses to replace an existing configuration and cannot run through the web.
+If `private_html/concepts-config/db.php` exists, the installer reads the database settings from it and only asks for a new review dashboard password. Otherwise it also asks for the existing application database credentials. It creates only two new tables with the zb_hub_ prefix and saves configuration outside public_html in private_html/zerobooze-content-hub.php. Never commit that configuration or credentials to GitHub. The installer refuses to replace an existing configuration and cannot run through the web.
 
 Public hub: /content-hub/
 Protected feedback dashboard: /content-hub/admin.php
