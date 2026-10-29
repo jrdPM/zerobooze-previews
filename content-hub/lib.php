@@ -1,10 +1,19 @@
 <?php
 declare(strict_types=1);
 // Kept inside the hub folder; secrets belong in the application's private_html.
+// The hub may sit directly in public_html or inside a project folder, so walk up to the folder that holds private_html.
+function hub_private_dir(): string {
+    $d = __DIR__;
+    for ($i = 0; $i < 4; $i++) {
+        $d = dirname($d);
+        if (is_dir($d . '/private_html')) return $d . '/private_html';
+    }
+    return dirname(__DIR__, 2) . '/private_html';
+}
 function hub_config(): array {
     static $c;
     if ($c !== null) return $c;
-    $path = dirname(__DIR__, 2) . '/private_html/zerobooze-content-hub.php';
+    $path = hub_private_dir() . '/zerobooze-content-hub.php';
     if (!is_file($path)) throw new RuntimeException('Hub feedback is not configured.');
     $c = require $path;
     if (!is_array($c) || strlen((string)($c['app_key'] ?? '')) < 32 || empty($c['base_url']) || empty($c['admin_hash'])) throw new RuntimeException('Invalid hub configuration.');
@@ -23,7 +32,7 @@ function hub_session(): void {
     ini_set('session.use_strict_mode', '1');
     ini_set('session.use_only_cookies', '1');
     session_name('zb_hub_review');
-    session_set_cookie_params(['lifetime'=>0, 'path'=>'/content-hub/', 'secure'=>str_starts_with($c['base_url'], 'https://'), 'httponly'=>true, 'samesite'=>'Strict']);
+    session_set_cookie_params(['lifetime'=>0, 'path'=>parse_url($c['base_url'], PHP_URL_PATH) ?: '/', 'secure'=>str_starts_with($c['base_url'], 'https://'), 'httponly'=>true, 'samesite'=>'Strict']);
     session_start();
     if (empty($_SESSION['csrf'])) $_SESSION['csrf'] = bin2hex(random_bytes(32));
     if (isset($_SESSION['admin_at']) && (time() - (int)$_SESSION['admin_at'] > 7200 || !hash_equals(hash('sha256',$c['app_key']),(string)($_SESSION['admin_version']??'')))) unset($_SESSION['admin_at'],$_SESSION['admin_version']);

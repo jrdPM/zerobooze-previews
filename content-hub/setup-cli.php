@@ -8,7 +8,7 @@ function ask(string $label,bool $secret=false): string {
     if($secret){if(function_exists('shell_exec'))shell_exec('stty echo 2>/dev/null');fwrite(STDOUT,"\n");}
     return $s;
 }
-$private=dirname(__DIR__,2).'/private_html';
+$private=dirname(__DIR__,2).'/private_html';foreach([2,3,4]as$up){if(is_dir(dirname(__DIR__,$up).'/private_html')){$private=dirname(__DIR__,$up).'/private_html';break;}}
 if(!is_dir($private)&&!mkdir($private,0700,true)){fwrite(STDERR,"Cannot create private configuration folder.\n");exit(1);}
 $target=$private.'/zerobooze-content-hub.php';
 if(is_file($target)){fwrite(STDERR,"Configuration already exists. Edit it deliberately; this installer will not overwrite it.\n");exit(1);}
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS zb_hub_rate (
 
 ZB_SCHEMA;
 $db->exec($sql);
- $config=['base_url'=>'https://phpstack-1346101-6750299.cloudwaysapps.com/content-hub/','dsn'=>$dsn,'db_user'=>$user,'db_password'=>$password,'app_key'=>bin2hex(random_bytes(32)),'admin_hash'=>password_hash($admin,PASSWORD_DEFAULT)];
+ $config=['base_url'=>'https://concepts.jumpingjackrabbit.com/zerobooze-previews/content-hub/','dsn'=>$dsn,'db_user'=>$user,'db_password'=>$password,'app_key'=>bin2hex(random_bytes(32)),'admin_hash'=>password_hash($admin,PASSWORD_DEFAULT)];
  $tmp=$target.'.'.bin2hex(random_bytes(4)).'.tmp';$old=umask(0077);file_put_contents($tmp,"<?php\nreturn ".var_export($config,true).";\n",LOCK_EX);chmod($tmp,0600);rename($tmp,$target);umask($old);
- fwrite(STDOUT,"Ready. Open /content-hub/ to test feedback and /content-hub/admin.php for the review dashboard.\nThe existing design folders were not changed.\n");
+ fwrite(STDOUT,"Ready. Open /zerobooze-previews/content-hub/ to test feedback and /zerobooze-previews/content-hub/admin.php for the review dashboard.\nThe existing design folders were not changed.\n");
 }catch(Throwable $e){fwrite(STDERR,"Setup failed. Verify database access and the PHP PDO MySQL extension. No configuration was saved.\n");exit(1);}

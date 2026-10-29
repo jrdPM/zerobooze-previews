@@ -1,5 +1,7 @@
 # ZeroBooze content hub
 
+> **New home:** this repo now deploys to `https://concepts.jumpingjackrabbit.com/zerobooze-previews/` through GitHub Actions (push to `main`). The hub is at `/zerobooze-previews/content-hub/`. After the first deploy, SSH to the application and run `php public_html/zerobooze-previews/content-hub/setup-cli.php` once. The configuration still lives in `private_html/zerobooze-content-hub.php`. The older Cloudways Git deployment keeps working with the same code.
+
 Deploy this folder alongside the existing design folders using the existing Cloudways Deployment via Git connection.
 
 After pulling the commit in Cloudways, connect through SSH, go to the application public_html directory, and run:

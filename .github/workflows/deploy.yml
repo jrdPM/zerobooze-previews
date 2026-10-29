@@ -1,0 +1,10 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    uses: "jackrabbit-design/jrd-concepts/.github/workflows/deploy-concept.yml@main"
+    secrets: inherit
