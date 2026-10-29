@@ -17,7 +17,7 @@ $shared=$private.'/concepts-config/db.php';$host='localhost';
 if(is_file($shared)){$c=require $shared;$name=(string)($c['name']??'');$user=(string)($c['user']??'');$password=(string)($c['pass']??'');$host=(string)($c['host']??'localhost');fwrite(STDOUT,"Using the database settings from private_html/concepts-config/db.php\n");}
 else{$name=ask('Cloudways application database name');$user=ask('Database username');$password=ask('Database password',true);}
 $admin=ask('Choose a dashboard password (12–72 characters)',true);$confirm=ask('Confirm dashboard password',true);
-if(!preg_match('/^[a-zA-Z0-9_]+$/',$name)||$user===''||$password===''||strlen($admin)<12||strlen($admin)>72||!hash_equals($admin,$confirm)){fwrite(STDERR,"Check the inputs. No configuration was created.\n");exit(1);}
+if(!preg_match('/^[a-zA-Z0-9_]+$/',$name)||!preg_match('/^[A-Za-z0-9._:-]+$/',$host)||$user===''||$password===''||strlen($admin)<12||strlen($admin)>72||!hash_equals($admin,$confirm)){fwrite(STDERR,"Check the inputs. No configuration was created.\n");exit(1);}
 $dsn='mysql:host='.$host.';port=3306;dbname='.$name.';charset=utf8mb4';
 try{
  $db=new PDO($dsn,$user,$password,[PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION]);
