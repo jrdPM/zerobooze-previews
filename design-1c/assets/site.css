@@ -655,3 +655,11 @@ body.mega-on .mega { opacity: 1; visibility: visible; transition: opacity .5s; }
 .hero .live-zero { margin: 0; font: 300 var(--step-2)/1.1 var(--display); letter-spacing: .22em; text-transform: uppercase; color: #E6C98F; }
 h2.stacked span { display: block; margin-top: .35em; font-size: .52em; letter-spacing: .24em; font-weight: 400; color: var(--lantern); }
 .band-dark h2.stacked span { color: #E6C98F; }
+
+/* ZB approach to recovery: 5 kinds of care + elective callout */
+.paths.five { grid-template-columns: repeat(5, 1fr); }
+.elective { margin-top: 2.5rem; padding: 2.2rem 2.4rem; background: var(--clapboard); border-left: 3px solid var(--lantern); }
+.elective h3 { font-size: 1.8rem; margin: .4rem 0 0; }
+.elective p:not(.eyebrow) { margin: .4rem 0 0; }
+@media (max-width: 1100px) { .paths.five { grid-template-columns: 1fr 1fr; } .paths.five article:nth-child(odd) { padding-left: 0; border-left: 0; } .paths.five article:nth-child(n+3) { border-top: 1px solid var(--rule); } }
+@media (max-width: 720px) { .paths.five { grid-template-columns: 1fr; } .elective { padding: 1.6rem 1.4rem; } }
