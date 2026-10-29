@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
   deploy:
     uses: "jackrabbit-design/jrd-concepts/.github/workflows/deploy-concept.yml@main"

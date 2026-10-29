@@ -8,7 +8,8 @@ function ask(string $label,bool $secret=false): string {
     if($secret){if(function_exists('shell_exec'))shell_exec('stty echo 2>/dev/null');fwrite(STDOUT,"\n");}
     return $s;
 }
-$private=dirname(__DIR__,2).'/private_html';foreach([2,3,4]as$up){if(is_dir(dirname(__DIR__,$up).'/private_html')){$private=dirname(__DIR__,$up).'/private_html';break;}}
+require __DIR__.'/lib.php';
+$private=hub_private_dir();
 if(!is_dir($private)&&!mkdir($private,0700,true)){fwrite(STDERR,"Cannot create private configuration folder.\n");exit(1);}
 $target=$private.'/zerobooze-content-hub.php';
 if(is_file($target)){fwrite(STDERR,"Configuration already exists. Edit it deliberately; this installer will not overwrite it.\n");exit(1);}

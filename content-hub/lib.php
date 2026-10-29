@@ -1,12 +1,14 @@
 <?php
 declare(strict_types=1);
 // Kept inside the hub folder; secrets belong in the application's private_html.
-// The hub may sit directly in public_html or inside a project folder, so walk up to the folder that holds private_html.
+// Secrets live in the private_html folder next to the public_html that serves this hub, whether the hub
+// sits directly in public_html or inside a project folder. Anchoring on public_html means a stray
+// private_html folder inside the web root is never used.
 function hub_private_dir(): string {
     $d = __DIR__;
-    for ($i = 0; $i < 4; $i++) {
+    while (dirname($d) !== $d) {
+        if (basename($d) === 'public_html') return dirname($d) . '/private_html';
         $d = dirname($d);
-        if (is_dir($d . '/private_html')) return $d . '/private_html';
     }
     return dirname(__DIR__, 2) . '/private_html';
 }
