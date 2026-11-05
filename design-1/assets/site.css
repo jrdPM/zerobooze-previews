@@ -627,3 +627,9 @@ h2.stacked span { display: block; margin-top: .35em; font-size: .52em; letter-sp
 
 /* hero: extra breathing room between Live Zero and the buttons */
 .hero .live-zero + .btn-row { margin-top: 1.6rem; }
+
+/* "Who it's for" columns: one text CTA per column, aligned to the bottom */
+.paths.ctas article { grid-template-rows: auto auto 1fr auto; align-content: stretch; }
+.paths.ctas article .link { margin-top: .6rem; justify-self: start; display: inline-block; line-height: 1.7; }
+.paths.ctas article .link .arw { vertical-align: middle; margin-left: .6rem; }
+.nw { white-space: nowrap; }
