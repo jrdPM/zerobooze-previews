@@ -672,3 +672,6 @@ h2.stacked span { display: block; margin-top: .35em; font-size: .52em; letter-sp
 .paths.ctas article .link { margin-top: .6rem; justify-self: start; display: inline-block; line-height: 1.7; }
 .paths.ctas article .link .arw { vertical-align: middle; margin-left: .6rem; }
 .nw { white-space: nowrap; }
+
+/* Living Zero intro: wider text column next to the headline */
+@media (min-width: 981px) { .split.wide-text.lz-head { grid-template-columns: minmax(0, 20rem) 1fr; gap: clamp(2rem, 4vw, 4.5rem); } }
